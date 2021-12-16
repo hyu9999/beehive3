@@ -1,0 +1,65 @@
+rid: "10234010203201"  # 机器人的唯一标识符
+name: 测试机器人
+version: 1.1.1
+description: >
+  1、根据估值，趋势能推荐相应的ETF
+  2、想知道持有ETF的当前估值
+  3、能根据当前的行业估值给出相应行业ETF的投资建议（行业轮动）
+  4、估值过高时卖出，过低时多买入（提示过高过低）
+  5、根据趋势判断ETF的走势（趋势好，趋势坏，震荡等）（辅助交易）
+
+triggers:
+    - name: 每日收盘后8点整运行
+      event_source: ScheduledEventSource
+      event_type: 每天闭市后运行
+      config:
+        hour: 8
+        min: 0
+        sec: 0
+    - name: trigger_name2
+      event_source: NewsEventSource
+      event_type: test
+    - name: trigger_name3
+      event_source: ManualTrigger
+      event_type: 用户点击
+
+resources:
+  - position  # 持仓
+  - available_funds  # 可用资金
+  - selected_lists  # 自选股
+  - database  # 基础数据
+  - hq_feed  # 实时行情
+  - tdate  # 当前交易日
+
+
+equipment_list:
+
+  - sid: "07201127medy01"
+    verson: 1.0.0
+    display_name: "均值偏离动态智能定投"
+    alias: 均值偏离动态智能定投
+    ithoughts: "test ithoughts"
+    depends_on: []
+    config:
+      趋势的时间周期: 10
+      定投资金的总份数: 11
+      每份金额: 20
+      定投标的: "510500"
+
+
+  - sid: "21000000000001"
+    verson: 1.0.0
+    display_name: "持仓"
+    alias: 持仓
+    ithoughts: "test ithoughts"
+    depends_on: [均值偏离动态智能定投]
+    config:
+      手机号码: "18706738141"
+      组合id: 5ec746e0f25a940042939b1b
+      选股数量: 10
+      单个资产的最大持仓比例: 0.1
+      最大持仓比例: 0.5
+      单个资产的最长持有周期:
+        value: 10
+        到期后操作: "立即卖出"
+

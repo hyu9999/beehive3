@@ -1,0 +1,38 @@
+site_name: StrawmanData使用说明
+site_description: strawmanData是金牛创智公司的装备库
+site_author: 邱承，迪夫，王磊，冯波
+copyright: 金牛智道 2019
+theme:
+  name: 'material'
+  logo: 'logo.png'
+  palette:
+      primary: 'blue'
+      accent: 'indigo'
+  feature:
+    tabs: true
+nav:
+    - 首页: index.md
+    - 基本概念: concepts.md
+    - 如何使用:
+      - 使用步骤: usage/使用步骤.md
+      - 机器人的功能: usage/机器人的功能.md
+      - 模拟交易撮合规则: usage/模拟交易撮合规则.md
+      - 装备的分类及功能: usage/装备的分类及功能.md
+      - 严格的评估评级体系: usage/严格的评估评级体系.md
+    - 接口说明:
+      - 数据字典: sdk/数据字典.md
+      - 接口定义: sdk/接口定义.md
+    - 后管平台:
+      - 策略开发代码规范说明文档: strategy/策略开发代码规范说明文档（Python）.md
+      - 组合机器人评级说明: strategy/组合机器人评级说明.md
+      - 选股评级说明: strategy/选股评级说明.md
+    - 服务器安装: install.md
+    - 常见问题: FAQ.md
+    - TODO: TODO.md
+    - Changelog: changelog.md
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: true
+extra:
+  disqus: 'jin-niu-zhi-dao-1'
